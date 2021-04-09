@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="incentro.listviewmessageifempty.ListviewMessageIfEmpty" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Listview Message If Empty</name>
+    <description>Show custom message if your listview is empty.</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="className" type="string" required="true">
+                <caption>Listview class</caption>
+                <description>Class of the listview to show message for if empty</description>
+            </property>
+            <property key="textIfEmpty" type="textTemplate" required="true">
+                <caption>Text if empty</caption>
+            <description>Message to show if listview is empty</description>
+            </property>
+            <property key="deleteBottomBorder" type="boolean" defaultValue="true">
+                <caption>Remove bottom border</caption>
+            <description>Indicates whether to remove the listview's bottom border</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>

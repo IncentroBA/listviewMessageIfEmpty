@@ -1,2 +1,2 @@
 # listviewMessageIfEmpty
-Pluggable web widget to display a message in case a listview is empty
+Pluggable web widget to display custom text in case a listview is empty
