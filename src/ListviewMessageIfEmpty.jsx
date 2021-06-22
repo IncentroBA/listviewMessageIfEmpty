@@ -11,10 +11,12 @@ export default class ListviewMessageIfEmpty extends Component {
         observer.observe(listView, {childList: true});
     
         function SetInnerTextIfEmpty() {
-            const listViewEmpty = listView.querySelector('.mx-listview-empty');
-            if (listViewEmpty) {
-                listViewEmpty.innerText = emptyValue;
-                bottomBorder ? listViewEmpty.style.borderBottom = "none" : '';
+            const listViews = listView.querySelectorAll('.mx-listview-empty');
+            if (listViews) {
+                listViews.forEach(listViewEmpty => {
+                    listViewEmpty.innerText = emptyValue;
+                    bottomBorder ? listViewEmpty.style.borderBottom = "none" : '';
+                });
             }
             return;
         }
@@ -22,4 +24,3 @@ export default class ListviewMessageIfEmpty extends Component {
         return (<div class="widget-listview-empty"></div>);
     }
 }
-

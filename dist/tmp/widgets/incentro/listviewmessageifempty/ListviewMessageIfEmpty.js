@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "e06d967881b958792d02";
+/******/ 	var hotCurrentHash = "666cae03edee125cca00";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -929,11 +929,13 @@ var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
       });
 
       function SetInnerTextIfEmpty() {
-        var listViewEmpty = listView.querySelector('.mx-listview-empty');
+        var listViews = listView.querySelectorAll('.mx-listview-empty');
 
-        if (listViewEmpty) {
-          listViewEmpty.innerText = emptyValue;
-          bottomBorder ? listViewEmpty.style.borderBottom = "none" : '';
+        if (listViews) {
+          listViews.forEach(function (listViewEmpty) {
+            listViewEmpty.innerText = emptyValue;
+            bottomBorder ? listViewEmpty.style.borderBottom = "none" : '';
+          });
         }
 
         return;

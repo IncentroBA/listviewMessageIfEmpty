@@ -1,7 +1,7 @@
 {
   "name": "listviewmessageifempty",
   "widgetName": "ListviewMessageIfEmpty",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Show custom message if your listview is empty.",
   "copyright": "",
   "author": "Pauline ten Brinke",

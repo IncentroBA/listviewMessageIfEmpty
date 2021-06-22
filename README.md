@@ -1,5 +1,5 @@
 ## Description
-Pluggable web widget to display custom text in case a listview is empty
+Pluggable web widget to display custom text in case a listview is empty. The widget also works with nested listviews.
 
 ## Typical usage scenario
 When an empty listview should have a custom message in case it's empty.
@@ -15,6 +15,8 @@ Toggle a boolean to display / hide the listview's bottom border.
 
 ### Limitations
 The widget doesn't really do any more than described.
+
+With nested listviews, the custom message cannot be separately configured between nested listviews.
 
 ## Dependencies
 A listview, selected by the same classname as defined in the widget.
