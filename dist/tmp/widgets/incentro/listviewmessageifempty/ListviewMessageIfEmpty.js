@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "666cae03edee125cca00";
+/******/ 	var hotCurrentHash = "e82c54002864c00f1499";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -881,6 +881,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListviewMessageIfEmpty; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_observe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/observe */ "./src/helpers/observe.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -905,6 +906,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
   _inherits(ListviewMessageIfEmpty, _Component);
 
@@ -920,15 +922,11 @@ var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var className = '.' + this.props.className;
-      var listView = document.querySelector(className);
       var emptyValue = this.props.textIfEmpty.value;
       var bottomBorder = this.props.deleteBottomBorder;
-      var observer = new MutationObserver(SetInnerTextIfEmpty);
-      observer.observe(listView, {
-        childList: true
-      });
 
       function SetInnerTextIfEmpty() {
+        var listView = document.querySelector(className);
         var listViews = listView.querySelectorAll('.mx-listview-empty');
 
         if (listViews) {
@@ -941,6 +939,7 @@ var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
         return;
       }
 
+      Object(_helpers_observe__WEBPACK_IMPORTED_MODULE_1__["observe"])(className, SetInnerTextIfEmpty);
       return /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         "class": "widget-listview-empty"
       });
@@ -951,6 +950,38 @@ var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./src/helpers/observe.jsx":
+/*!*********************************!*\
+  !*** ./src/helpers/observe.jsx ***!
+  \*********************************/
+/*! exports provided: observe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observe", function() { return observe; });
+// Check and keep checking for DOM changes
+function observe(elementClass, callback) {
+  var element = document.querySelector(elementClass);
+  var config = {
+    attributes: true,
+    attributeOldValue: true,
+    childList: true,
+    // This is a must have for the observer with subtree
+    subtree: true // Set to true if changes must also be observed in descendants.
+
+  };
+  var observer = new MutationObserver(function () {
+    observer.disconnect();
+    element && callback();
+    observer.observe(element, config);
+  });
+  observer.observe(element, config);
+}
+;
 
 /***/ }),
 
