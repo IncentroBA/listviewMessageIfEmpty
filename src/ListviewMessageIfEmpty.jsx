@@ -9,7 +9,7 @@ export default class ListviewMessageIfEmpty extends Component {
         
         function SetInnerTextIfEmpty() {
             const listView = document.querySelector(className);
-            const listViews = listView.querySelectorAll('.mx-listview-empty');
+            const listViews = listView ? listView.querySelectorAll('.mx-listview-empty') : '';
             if (listViews) {
                 listViews.forEach(listViewEmpty => {
                     listViewEmpty.innerText = emptyValue;

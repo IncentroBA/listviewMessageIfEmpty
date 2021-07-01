@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "e82c54002864c00f1499";
+/******/ 	var hotCurrentHash = "963d7ad2e5909b0f0ba0";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -927,7 +927,7 @@ var ListviewMessageIfEmpty = /*#__PURE__*/function (_Component) {
 
       function SetInnerTextIfEmpty() {
         var listView = document.querySelector(className);
-        var listViews = listView.querySelectorAll('.mx-listview-empty');
+        var listViews = listView ? listView.querySelectorAll('.mx-listview-empty') : '';
 
         if (listViews) {
           listViews.forEach(function (listViewEmpty) {
