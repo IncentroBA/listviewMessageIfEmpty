@@ -1,5 +1,5 @@
 export function waitFor(elementClass, callback, parent) {
-  const context = (parent !== undefined) ? parent : document;
+  const context = parent || document;
 
   if (context.querySelector(elementClass)) {
     callback();

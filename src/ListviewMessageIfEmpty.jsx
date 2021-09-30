@@ -10,17 +10,15 @@ export default class ListviewMessageIfEmpty extends Component {
 
         function callback() {
             const context = document.querySelectorAll(className);
-            setTimeout(() => {
-                context.forEach(contextItem => {
-                    const listViews = contextItem.querySelectorAll(".mx-listview-empty");
-                    if (listViews) {
-                        listViews.forEach(listViewEmpty => {
-                            listViewEmpty.innerText = emptyValue;
-                            bottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
-                        });
-                    }
-                });
-            }, 300);
+            context.forEach(contextItem => {
+                const listViews = contextItem.querySelectorAll(".mx-listview-empty");
+                if (listViews) {
+                    listViews.forEach(listViewEmpty => {
+                        listViewEmpty.innerText = emptyValue;
+                        bottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
+                    });
+                }
+            });
         }
 
         waitFor(".mx-listview-empty", callback, parent);
