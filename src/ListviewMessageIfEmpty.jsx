@@ -1,32 +1,29 @@
 import { Component } from "react";
-import "regenerator-runtime/runtime";
+import { waitFor } from "./helpers/waitfor";
 
 export default class ListviewMessageIfEmpty extends Component {
     render() {
-        const className = '.' + this.props.className;
+        const className = "." + this.props.className;
         const emptyValue = this.props.textIfEmpty.value;
         const bottomBorder = this.props.deleteBottomBorder;
+        const parent = document.querySelector(className);
 
-        const asyncQuerySelector = async (query) => {
-            try {
-              return await (query ? document.querySelector(query) : document);
-            } catch (error) {
-              console.error(`Cannot find ${query ? `${query} in`: ''} ${document}.`, error);
-              return null;
-            }
-        };
+        function callback() {
+            const context = document.querySelectorAll(className);
+            setTimeout(() => {
+                context.forEach(contextItem => {
+                    const listViews = contextItem.querySelectorAll(".mx-listview-empty");
+                    if (listViews) {
+                        listViews.forEach(listViewEmpty => {
+                            listViewEmpty.innerText = emptyValue;
+                            bottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
+                        });
+                    }
+                });
+            }, 300);
+        }
 
-          asyncQuerySelector(className).then(node => {
-              const listViews = node ? node.querySelectorAll('.mx-listview-empty') : '';
-              
-              if (listViews) {
-                  listViews.forEach(listViewEmpty => {
-                      listViewEmpty.innerText = emptyValue;
-                      bottomBorder ? listViewEmpty.style.borderBottom = "none" : '';
-                    });
-                }
-          })
-
+        waitFor(".mx-listview-empty", callback, parent);
         return null;
     }
 }
