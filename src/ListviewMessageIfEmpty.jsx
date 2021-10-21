@@ -2,11 +2,12 @@
 import { waitFor } from "./helpers/waitfor";
 import { createElement, useState, useEffect } from "react";
 
-export default function ListviewMessageIfEmpty({ className, sections, textIfEmpty }) {
+export default function ListviewMessageIfEmpty({ className, context, textIfEmpty }) {
     const [canRender, setCanRender] = useState(false);
+    // const borderUsage = deleteBottomBorder ? "" : "";
 
     useEffect(() => {
-        if (sections && sections.status === "available" && sections.items.length === 0) {
+        if (context && context.status === "available" && context.items.length === 0) {
             setCanRender(true);
         }
     });
@@ -17,7 +18,7 @@ export default function ListviewMessageIfEmpty({ className, sections, textIfEmpt
             listViews &&
                 listViews.forEach(listViewEmpty => {
                     listViewEmpty.classList.add("hidden");
-                    // deleteBottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
+                    // (listViewEmpty.style.borderBottom = "none") : "";
                 });
         });
     }
