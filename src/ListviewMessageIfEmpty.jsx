@@ -1,27 +1,32 @@
-import { Component } from "react";
+// import "./ui/ListviewMessageIfEmpty.css";
 import { waitFor } from "./helpers/waitfor";
+import { createElement, useState, useEffect } from "react";
 
-export default class ListviewMessageIfEmpty extends Component {
-    render() {
-        const className = "." + this.props.className;
-        const emptyValue = this.props.textIfEmpty.value;
-        const bottomBorder = this.props.deleteBottomBorder;
-        const parent = document.querySelector(className);
+export default function ListviewMessageIfEmpty({ className, sections, textIfEmpty }) {
+    const [canRender, setCanRender] = useState(false);
 
-        function callback() {
-            const context = document.querySelectorAll(className);
-            context.forEach(contextItem => {
-                const listViews = contextItem.querySelectorAll(".mx-listview-empty");
-                if (listViews) {
-                    listViews.forEach(listViewEmpty => {
-                        listViewEmpty.innerText = emptyValue;
-                        bottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
-                    });
-                }
-            });
+    useEffect(() => {
+        if (sections && sections.status === "available" && sections.items.length === 0) {
+            setCanRender(true);
         }
+    });
 
-        waitFor(".mx-listview-empty", callback, parent);
+    function callback() {
+        document.querySelectorAll(`.${className}`).forEach(contextItem => {
+            const listViews = contextItem.querySelectorAll(".mx-listview-empty");
+            listViews &&
+                listViews.forEach(listViewEmpty => {
+                    listViewEmpty.classList.add("hidden");
+                    // deleteBottomBorder ? (listViewEmpty.style.borderBottom = "none") : "";
+                });
+        });
+    }
+
+    waitFor(`.${className} .mx-listview-empty`, callback, document);
+
+    if (canRender) {
+        return <div className="listview-message-if-empty">{textIfEmpty.value}</div>;
+    } else {
         return null;
     }
 }

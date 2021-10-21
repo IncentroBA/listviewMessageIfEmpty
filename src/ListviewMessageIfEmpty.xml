@@ -10,15 +10,15 @@
         <propertyGroup caption="General">
             <property key="className" type="string" required="true">
                 <caption>Listview class</caption>
-                <description>Class of the listview to show message for if empty</description>
+                <description>Class of the listview that the widget needs to listen to.</description>
             </property>
             <property key="textIfEmpty" type="textTemplate" required="true">
                 <caption>Text if empty</caption>
-            <description>Message to show if listview is empty</description>
+            <description>Message to show if listview is empty.</description>
             </property>
-            <property key="deleteBottomBorder" type="boolean" defaultValue="true">
-                <caption>Remove bottom border</caption>
-            <description>Indicates whether to remove the listview's bottom border</description>
+            <property key="context" type="datasource" isList="true" required="false">
+                <caption>Context</caption>
+                <description>Assign the same context to the widget as the Listview that needs to display the message.</description>
             </property>
         </propertyGroup>
     </properties>
