@@ -1,10 +1,9 @@
-// import "./ui/ListviewMessageIfEmpty.css";
+import "./ui/ListviewMessageIfEmpty.css";
 import { waitFor } from "./helpers/waitfor";
 import { createElement, useState, useEffect } from "react";
 
 export default function ListviewMessageIfEmpty({ className, context, textIfEmpty }) {
     const [canRender, setCanRender] = useState(false);
-    // const borderUsage = deleteBottomBorder ? "" : "";
 
     useEffect(() => {
         if (context && context.status === "available" && context.items.length === 0) {
@@ -15,11 +14,7 @@ export default function ListviewMessageIfEmpty({ className, context, textIfEmpty
     function callback() {
         document.querySelectorAll(`.${className}`).forEach(contextItem => {
             const listViews = contextItem.querySelectorAll(".mx-listview-empty");
-            listViews &&
-                listViews.forEach(listViewEmpty => {
-                    listViewEmpty.classList.add("hidden");
-                    // (listViewEmpty.style.borderBottom = "none") : "";
-                });
+            listViews && listViews.forEach(listViewEmpty => listViewEmpty.classList.add("hidden"));
         });
     }
 
