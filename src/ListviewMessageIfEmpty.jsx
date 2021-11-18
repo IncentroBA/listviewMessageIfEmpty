@@ -1,28 +1,41 @@
 import "./ui/ListviewMessageIfEmpty.css";
+import { createElement, useEffect, useRef, useState } from "react";
 import { waitFor } from "./helpers/waitfor";
-import { createElement, useState, useEffect } from "react";
 
 export default function ListviewMessageIfEmpty({ className, context, textIfEmpty }) {
     const [canRender, setCanRender] = useState(false);
+    const listviewMessage = useRef(null);
 
     useEffect(() => {
-        if (context && context.status === "available" && context.items.length === 0) {
-            setCanRender(true);
+        if (context && context.status === "available" && listviewMessage.current) {
+            if (context.items.length === 0) {
+                setCanRender(true);
+                listviewMessage.current.classList.remove("hidden");
+            } else {
+                setCanRender(false);
+                listviewMessage.current.classList.add("hidden");
+            }
         }
-    });
+    }, [context]);
 
     function callback() {
         document.querySelectorAll(`.${className}`).forEach(contextItem => {
             const listViews = contextItem.querySelectorAll(".mx-listview-empty");
-            listViews && listViews.forEach(listViewEmpty => listViewEmpty.classList.add("hidden"));
+            if (listViews) {
+                listViews.forEach(listViewEmpty => listViewEmpty.classList.add("hidden"));
+            }
         });
     }
 
     waitFor(`.${className} .mx-listview-empty`, callback, document);
 
     if (canRender) {
-        return <div className="listview-message-if-empty">{textIfEmpty.value}</div>;
+        return (
+            <div className="listview-message-if-empty" ref={listviewMessage}>
+                {textIfEmpty.value}
+            </div>
+        );
     } else {
-        return null;
+        return <div className="listview-message-if-empty" ref={listviewMessage}></div>;
     }
 }
