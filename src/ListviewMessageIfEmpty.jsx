@@ -2,7 +2,9 @@ import "./ui/ListviewMessageIfEmpty.css";
 import { createElement, useEffect, useRef, useState } from "react";
 import { waitFor } from "./helpers/waitfor";
 
-export default function ListviewMessageIfEmpty({ className, context, textIfEmpty }) {
+export default function ListviewMessageIfEmpty(props) {
+    const { className, context, textIfEmpty } = props;
+    const style = props.class || "";
     const [canRender, setCanRender] = useState(false);
     const listviewMessage = useRef(null);
 
@@ -31,7 +33,7 @@ export default function ListviewMessageIfEmpty({ className, context, textIfEmpty
 
     if (canRender) {
         return (
-            <div className="listview-message-if-empty" ref={listviewMessage}>
+            <div className={`listview-message-if-empty ${style}`} ref={listviewMessage}>
                 {textIfEmpty.value}
             </div>
         );
