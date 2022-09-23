@@ -7,18 +7,14 @@
     <description>Show custom message if your listview is empty.</description>
     <icon>iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAYAAAGwzYjlAAAACXBIWXMAAC4jAAAuIwF4pT92AAAETElEQVR4nO1bjXXaMBAWfR3AmaDeoN6gZIN2A2cDNoBMkG4AnYB2ApIJSCeADcwG9Nk98U7HSSdLsrGJv/cUxz+STqfT/UkoH8zgm7NS6pn5fqm/eREaO1/+uD76RGsw1wYHn+5cXVbcwzlUyIXWA1AzKYN+KSO/Qdcif/5/ZYNm3goNjzJRbaUuWMbQVvADkWgnFqgVV9l50eOJut5aN+DkqQBDYIPBNUKHVt+X5H6fkid7WndumQ0FkkyfuwTnglW0wMRg7ylsmNGGCqzxWyn114OIJanfMChk7BmuF8O8Rtpn8M/MowKHWoFksWLf8K+TtUM1ku3eWPW0kRO535D7B7i+UmpiZ2dl/BPYiHHD6ggLtKBd2QibGlBgiem7zJfUVrrD1kgRWvm+wE1E6uL0HnBnXc5JaZFEg4gOXDgrFpQYfRO6imOgxWCLldqVouoBv6CLaGORDBIhkgrD7sOaef/dJZgYLkKozHCOL15dJfOeLlPnYtDU1tT3jZ1C3n3pw7qOcDXtLzZ3sCOsbb6Jhq/vKnFw5VHXEG7JUSyY1VKgjMAMNCSXIfiplPqD7o9QkoEbLbd0W+FzQJ1jhMs9YfwoQC2n8sgqEGQvV9sWyqcuhp3B0r4jWu2I/IMUWJI2nmjQhtVrm5AoBBXq6zJonDGJVkCewCajgfYNg8OtQBgDv4WHrrCXPkMsuYVKbvoehFM8EaExEaHhIkLSojQtzAG/d4YctkYkR7ci72lAxRlDto+Y6ZCcWJphdMJGZUlVKwPsL3DANoLzJSaNaQAT0UdYiGFkAvBS7At4eV8cG0nAUoNdtkUbxRIBGk5egRIiFVuGMPdM6F6ABfMdlmlo1k97SgfBS3um6kDSDVxiQ0v1IxC+ZzqtteUP8ixpStPFYulkQ2dEVLfY2+g7RmERsyU/YcKEDlEGJKOHUrYplMvLSAfvKlVbp8klAesRbcqXaBeKK04nn274DcJ4JkJumeSKCxS5bRb2xN7IUTD5hTN2WDmJuMUpgD5B45RLJEjFp+vE+xCQ2wSAPuw7e3ArUOW64/I4Sfd8B4w3StpgzsYMARMzECZmIMQwA8crrXbNARnUqZAVa6u86e7/NtZDptZECmqkEwA+HutaaMMnsHLlNKXf9CjG0WStiQSJUJ/Zlb7xmRBXbjUPiVRDmLERdqOePNpwfXNizs9TvAr5XOk9i9BTWg/AfTzDbQjYQJmTGdy08HMe4VoiKTl6MFLjC/fwo8UlGjQMaQJTehaLDWvvDFxw2iR9uJ9z+WjjsYKzhsaZaS6Ku8egjTPpbN4mc6T8xqxHMkf6zxgXt7VZQGWb3jjCrwXfwAyeYIvzlsiQ51lfv4IOsI3hHayR94GVrMMMua+kzRMetq1SLvscBpFi/4RL18893PQ2A9/C4AdlGTntvWg58N29KHPbFoSt7Ic4o6ng+m3LXQ+cg14OB1geH2bgE+4CSql/vQYihezsUJAAAAAASUVORK5CYII=</icon>
     <properties>
-        <propertyGroup caption="General">
-            <property key="className" type="string" required="true">
-                <caption>Listview class</caption>
-                <description>Class of the listview that the widget needs to listen to.</description>
+        <propertyGroup caption="Widgets">
+            <property key="listviewWidget" type="widgets" required="false">
+                <caption>Listview widget</caption>
+                <description>Place a listview inside.</description>
             </property>
-            <property key="textIfEmpty" type="textTemplate" required="true">
-                <caption>Text if empty</caption>
-            <description>Message to show if listview is empty.</description>
-            </property>
-            <property key="context" type="datasource" isList="true" required="false">
-                <caption>Context</caption>
-                <description>Assign the same context to the widget as the Listview that needs to display the message.</description>
+            <property key="emptyWidget" type="widgets" required="false">
+                <caption>Empty Listview content</caption>
+                <description>Place the content to show when the listview is empty.</description>
             </property>
         </propertyGroup>
     </properties>

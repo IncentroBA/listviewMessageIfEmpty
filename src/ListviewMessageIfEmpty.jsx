@@ -2,41 +2,57 @@ import "./ui/ListviewMessageIfEmpty.css";
 import { createElement, useEffect, useRef, useState } from "react";
 import { waitFor } from "./helpers/waitfor";
 
-export default function ListviewMessageIfEmpty({ className, context, textIfEmpty, ...rest }) {
+export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ...rest }) {
     const style = rest.class || "";
-    const [canRender, setCanRender] = useState(false);
-    const listviewMessage = useRef(null);
-
-    useEffect(() => {
-        if (context && context.status === "available" && listviewMessage.current) {
-            if (context.items.length === 0) {
-                setCanRender(true);
-                listviewMessage.current.classList.remove("hidden");
-            } else {
-                setCanRender(false);
-                listviewMessage.current.classList.add("hidden");
-            }
-        }
-    }, [context]);
+    const listviewMessageRef = useRef(null);
+    const listviewWidgetRef = useRef(null);
+    const returnType = { widget: "widget", emptyText: "text" };
+    const [displayWidget, setDisplayWidget] = useState(returnType.widget);
+    const [displayClass, setDisplayClass] = useState(null);
+    const listviewRef = useRef(null);
 
     function callback() {
-        document.querySelectorAll(`.${className}`).forEach(contextItem => {
-            const listViews = contextItem.querySelectorAll(".mx-listview-empty");
-            if (listViews) {
-                listViews.forEach(listViewEmpty => listViewEmpty.classList.add("hidden"));
+        console.info("callback");
+        setTimeout(() => {
+            if (listviewWidgetRef.current.querySelector(".mx-listview-empty")) {
+                console.info("empty listview");
+                setDisplayWidget(returnType.emptyText);
+                setDisplayClass("hidden");
+            } else {
+                console.info("show listview");
+                setDisplayWidget(returnType.widget);
+                setDisplayClass(null);
             }
-        });
+        }, 10);
     }
 
-    waitFor(`.${className} .mx-listview-empty`, callback, document);
+    useEffect(() => {
+        console.info("useEffect");
+        console.info({ listviewWidgetRef });
+        if (listviewWidgetRef && listviewWidgetRef.current) {
+            waitFor(".mx-listview-empty", callback, listviewWidgetRef.current);
+        }
 
-    if (canRender) {
-        return (
-            <div className={`listview-message-if-empty ${style}`} ref={listviewMessage}>
-                {textIfEmpty.value}
+        const listview = listviewWidgetRef.current.querySelector(".mx-listview");
+        console.info(listview);
+        listview.ref = listviewRef;
+
+        console.info(listviewRef);
+    });
+
+    return (
+        <div className="listview-message-if-empty">
+            {console.info({ displayClass })}
+            {console.info("-----")}
+            <div className={`listview-message-if-empty__widget`} ref={listviewWidgetRef}>
+                {/* <div className={`listview-message-if-empty__widget ${displayClass}`} ref={listviewWidgetRef}> */}
+                {listviewWidget}
             </div>
-        );
-    } else {
-        return <div className="listview-message-if-empty" ref={listviewMessage}></div>;
-    }
+            {displayWidget === returnType.emptyText && (
+                <div className={`listview-message-if-empty__text ${style}`} ref={listviewMessageRef}>
+                    {emptyWidget}
+                </div>
+            )}
+        </div>
+    );
 }

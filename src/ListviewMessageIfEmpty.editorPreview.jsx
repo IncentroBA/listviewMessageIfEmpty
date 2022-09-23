@@ -1,11 +1,13 @@
-import { Component, createElement } from "react";
+import { createElement } from "react";
 
-export class preview extends Component {
-    render() {
-        return <div className="widget-listview-empty"></div>;
-    }
+export function preview() {
+    return (
+        <div className="listview-message-if-empty-preview">
+            <div className="listview-message-if-empty__widget">Listview Message If Empty widget</div>
+        </div>
+    );
 }
 
 export function getPreviewCss() {
-    return;
+    return require("./ui/ListviewMessageIfEmpty.css");
 }
