@@ -15,11 +15,9 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
         console.info("callback");
         setTimeout(() => {
             if (listviewWidgetRef.current.querySelector(".mx-listview-empty")) {
-                console.info("empty listview");
                 setDisplayWidget(returnType.emptyText);
                 setDisplayClass("hidden");
             } else {
-                console.info("show listview");
                 setDisplayWidget(returnType.widget);
                 setDisplayClass(null);
             }
@@ -27,23 +25,16 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
     }
 
     useEffect(() => {
-        console.info("useEffect");
-        console.info({ listviewWidgetRef });
         if (listviewWidgetRef && listviewWidgetRef.current) {
             waitFor(".mx-listview-empty", callback, listviewWidgetRef.current);
         }
 
         const listview = listviewWidgetRef.current.querySelector(".mx-listview");
-        console.info(listview);
         listview.ref = listviewRef;
-
-        console.info(listviewRef);
     });
 
     return (
         <div className="listview-message-if-empty">
-            {console.info({ displayClass })}
-            {console.info("-----")}
             <div className={`listview-message-if-empty__widget`} ref={listviewWidgetRef}>
                 {/* <div className={`listview-message-if-empty__widget ${displayClass}`} ref={listviewWidgetRef}> */}
                 {listviewWidget}
