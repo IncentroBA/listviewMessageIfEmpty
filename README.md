@@ -24,7 +24,10 @@ A listview, selected by the same classname as defined in the widget.
 
 ## Installation
 
-Install the widget and configure it.
+Install the widget and configure it:
+
+1. Place a listview widget inside the 'Listview widget ' section.
+2. Add the text / widget(s) for when the listview is empty inside the 'Empty Listview content' section.
 
 ## Configuration
 
