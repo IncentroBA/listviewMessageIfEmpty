@@ -16,7 +16,7 @@ Place a listview inside the widget. Place other text / widgets inside the empty 
 
 The widget doesn't really do any more than described.
 
-With nested listviews, the custom message cannot be separately configured between nested listviews.
+With nested listviews, you would need to use another Listview Message If Empty to configure the inner listview(s).
 
 ## Dependencies
 

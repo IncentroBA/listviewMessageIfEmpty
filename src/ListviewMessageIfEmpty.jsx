@@ -16,7 +16,9 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
     };
 
     function callback() {
-        if (listviewWidgetRef.current.querySelector(".mx-listview-empty")) {
+        if (
+            listviewWidgetRef.current.querySelector(".mx-listview:first-of-type > ul > li:only-child.mx-listview-empty")
+        ) {
             setDisplayWidget(returnType.emptyText);
             setDisplayClass("hidden");
         } else {
