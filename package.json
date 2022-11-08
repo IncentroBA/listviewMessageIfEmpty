@@ -1,9 +1,9 @@
 {
     "name": "listviewmessageifempty",
     "widgetName": "ListviewMessageIfEmpty",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "Show custom message if your listview is empty.",
-    "copyright": "2021 Incentro International B.V.",
+    "copyright": "2022 Incentro International B.V.",
     "author": "Rob Duits",
     "engines": {
         "node": ">=16"
@@ -24,9 +24,6 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@mendix/pluggable-widgets-tools": "^9.17.0"
-    },
-    "dependencies": {
-        "classnames": "^2.3.2"
+        "@mendix/pluggable-widgets-tools": "^9.18.0"
     }
 }
