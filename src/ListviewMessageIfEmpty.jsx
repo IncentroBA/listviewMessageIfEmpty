@@ -16,14 +16,15 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
     };
 
     function callback() {
-        if (
-            listviewWidgetRef.current.querySelector(".mx-listview:first-of-type > ul > li:only-child.mx-listview-empty")
-        ) {
+        const listview = listviewWidgetRef.current.querySelector(".mx-listview:first-of-type");
+        const emptyList = listview.querySelectorAll(":scope > ul > li:only-child.mx-listview-empty");
+
+        if (emptyList.length) {
             setDisplayWidget(returnType.emptyText);
             setDisplayClass("hidden");
         } else {
             setDisplayWidget(returnType.widget);
-            setDisplayClass(null);
+            setDisplayClass("show");
         }
     }
 
