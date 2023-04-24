@@ -1,9 +1,9 @@
 .listview-message-if-empty .listview-message-if-empty__widget .mx-listview-empty {
-    display: none;
+  display: none;
 }
 
 .listview-message-if-empty-preview {
-    border: solid 1px #fe5000;
-    border-radius: 4px;
-    padding: 16px;
+  border: solid 1px #fe5000;
+  border-radius: 4px;
+  padding: 16px;
 }

@@ -31,7 +31,9 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
     useEffect(() => {
         const observer = new MutationObserver(() => {
             observer.disconnect();
-            listviewWidgetRef.current && callback();
+            if (listviewWidgetRef.current) {
+                callback();
+            }
             observer.observe(listviewWidgetRef.current, config);
         });
 

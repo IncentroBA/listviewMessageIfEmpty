@@ -79,9 +79,10 @@ export function getProperties(values, defaultProperties, target) {
 // /**
 //  * @param {object} values
 //  * @param {boolean} isDarkMode
+//  * @param {number[]} version
 //  * @returns {object}
 //  */
-// export function getPreview(values, isDarkMode) {
+// export function getPreview(values, isDarkMode, version) {
 //     // Customize your pluggable widget appearance for Studio Pro.
 //     return {
 //         type: "Container",
@@ -95,5 +96,5 @@ export function getProperties(values, defaultProperties, target) {
 //  * @returns {string}
 //  */
 // export function getCustomCaption(values, platform) {
-//     return "ListviewMessageIfEmptyNEWWWW";
+//     return "ListviewMessageIfEmpty";
 // }
