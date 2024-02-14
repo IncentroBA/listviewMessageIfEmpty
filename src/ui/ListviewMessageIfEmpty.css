@@ -3,7 +3,8 @@
 }
 
 .listview-message-if-empty-preview {
-  border: solid 1px #fe5000;
+  border: dashed 1px #ced0d3;
   border-radius: 4px;
-  padding: 16px;
+  margin-bottom: 24px;
+  padding: 8px;
 }

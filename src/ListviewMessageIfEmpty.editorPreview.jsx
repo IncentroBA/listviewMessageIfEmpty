@@ -1,9 +1,17 @@
 import { createElement } from "react";
 
-export function preview() {
+export function preview({ listviewWidget, emptyWidget }) {
+    const ContentRenderer = listviewWidget.renderer;
+    const EmptyContentRenderer = emptyWidget.renderer;
+
     return (
         <div className="listview-message-if-empty-preview">
-            <div className="listview-message-if-empty__widget">Listview Message If Empty widget</div>
+            <ContentRenderer caption="Listview Message If Empty widget.">
+                <div className="listview-message-if-empty__widget" />
+            </ContentRenderer>
+            <EmptyContentRenderer caption="Empty message">
+                <div className="listview-message-if-empty__widget" />
+            </EmptyContentRenderer>
         </div>
     );
 }

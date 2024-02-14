@@ -2,15 +2,15 @@
     "name": "listviewmessageifempty",
     "widgetName": "ListviewMessageIfEmpty",
     "version": "2.0.8",
-    "description": "Show custom message if your listview is empty.",
-    "copyright": "2023 Incentro International B.V.",
+    "description": "Pluggable web widget to display custom input in case a listview is empty. The widget also works with nested listviews.",
+    "copyright": "2024 Incentro International B.V.",
     "author": "Rob Duits",
     "engines": {
         "node": ">=16"
     },
     "license": "MIT",
     "config": {
-        "projectPath": "../..//",
+        "projectPath": "../../",
         "mendixHost": "http://localhost:8080",
         "developmentPort": 3000
     },
@@ -25,10 +25,10 @@
         "release": "pluggable-widgets-tools release:web"
     },
     "devDependencies": {
-        "@mendix/pluggable-widgets-tools": "^10.0.1"
+        "@mendix/pluggable-widgets-tools": "^10.5.0"
     },
     "dependencies": {
-        "classnames": "^2.3.2"
+        "classnames": "^2.2.6"
     },
     "resolutions": {
         "react": "18.2.0",
