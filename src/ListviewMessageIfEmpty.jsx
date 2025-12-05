@@ -16,7 +16,7 @@ export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ..
     };
 
     function callback() {
-        const listview = listviewWidgetRef.current.querySelector(".mx-listview:first-of-type");
+        const listview = listviewWidgetRef.current.querySelector(".mx-listview");
         const emptyList = listview.querySelectorAll(":scope > ul > li:only-child.mx-listview-empty");
 
         if (emptyList.length) {

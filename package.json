@@ -1,7 +1,7 @@
 {
     "name": "listviewmessageifempty",
     "widgetName": "ListviewMessageIfEmpty",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "description": "Pluggable web widget to display custom input in case a listview is empty. The widget also works with nested listviews.",
     "copyright": "2024 Incentro International B.V.",
     "author": "Rob Duits",
