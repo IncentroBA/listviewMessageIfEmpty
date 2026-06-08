@@ -1,5 +1,5 @@
 import "./ui/ListviewMessageIfEmpty.css";
-import { createElement, useEffect, useRef, useState } from "react";
+import {  useEffect, useRef, useState } from "react";
 
 export default function ListviewMessageIfEmpty({ listviewWidget, emptyWidget, ...rest }) {
     const style = rest.class || "";

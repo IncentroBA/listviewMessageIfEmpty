@@ -1,4 +1,3 @@
-import { createElement } from "react";
 
 export function preview({ listviewWidget, emptyWidget }) {
     const ContentRenderer = listviewWidget.renderer;
